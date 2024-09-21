@@ -78,10 +78,10 @@ class Player extends Sprite{
 		for (let i = 0; i < this.CollisionBlocks.length; i++) {
 			const CollisionBlock = this.CollisionBlocks [i]
 			//if collision exists
-			if (this.hitbox.position.x <= CollisionBlock.position.x + CollisionBlock.width && 
-				this.hitbox.position.x + this.hitbox.width >= CollisionBlock.position.x && 
-				this.hitbox.position.y + this.hitbox.height >= CollisionBlock.position.y &&
-				this.hitbox.position.y <= CollisionBlock.position.y + CollisionBlock.height
+			if (this.position.x <= CollisionBlock.position.x + CollisionBlock.width && 
+				this.position.x + this.width >= CollisionBlock.position.x && 
+				this.position.y + this.height >= CollisionBlock.position.y &&
+				this.position.y <= CollisionBlock.position.y + CollisionBlock.height
 
 				) {
 				if (this.velocity.y < 0) {
@@ -91,8 +91,7 @@ class Player extends Sprite{
 				}
 				if (this.velocity.y > 0) {
 					this.velocity.y = 0
-					const offset = this.hitbox.position.y - this.position.y + this.hitbox.height
-					this.position.y = CollisionBlock.position.y - offset - 0.01
+					this.position.y = CollisionBlock.position.y - CollisionBlock.height - 0.01
 					break
 				}
 			}
